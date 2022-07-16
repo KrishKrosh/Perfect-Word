@@ -1,0 +1,129 @@
+html * {
+  background: #ECEADB 
+}
+
+h1 {
+  font-family: 'Glass Antiqua', cursive;
+  font-size: 3.5em;
+  color: #4f4f4f;
+}
+
+h2 {
+  font-family: 'Glass Antiqua', cursive;
+  font-size: 3em;
+  color: #4f4f4f;
+}
+
+h3{
+  color: #4f4f4f;
+  font-weight: lighter;
+  font-size: 1.2em;
+}
+
+h4{
+  color: #8a8a8a;
+  font-weight: lighter;
+  font-size: 0.8em;
+  margin-top: 20px;
+}
+
+.title{
+  margin-top: 5vh;
+  margin-bottom: 0px;
+}
+
+
+.center{
+  text-align: center
+}
+
+.inner-center{
+  margin-right: auto
+}
+
+.main-form{
+  padding: 20px;
+  margin: 2vw
+}
+
+.main-form-input{
+  min-width: 100%;
+  margin: 10px;
+  background: #DCDACB;
+  border-radius: 10px;
+  border: none;
+  resize: none;
+  height: 15vh;
+  padding: 10px;
+  font-family: 'Glass Antiqua', cursive;
+  font-size: 1.2em;
+}
+.advanced-form-input{
+  min-width: 100%;
+  margin: 10px;
+  background: #DCDACB;
+  border-radius: 10px;
+  border: none;
+  resize: none;
+  padding: 10px;
+  font-family: 'Glass Antiqua', cursive;
+  font-size: 1.2em;
+}
+
+.option{
+  font-family: 'Glass Antiqua', cursive;
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: #5c5c5c;
+}
+
+.transparent {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 16px;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #383636; /* Black */
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.button-52 {
+  font-size: 16px;
+  font-weight: 200;
+  color: black;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  margin-top: 10px
+}
+
+
+@media (min-width: 768px) {
+  .button-52 {
+    padding: 13px 50px 13px;
+  }
+}
