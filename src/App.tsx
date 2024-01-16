@@ -2,7 +2,7 @@ import './App.css'
 import { useRef, useState, useCallback } from 'react'
 import { Row, Col, Form } from 'react-bootstrap'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
-import { Configuration, OpenAIApi } from "openai";
+import { CohereClient } from 'cohere-ai'
 
 
 export default function App() {
@@ -19,13 +19,12 @@ export default function App() {
   const [advanced, setAdvanced] = useState(false)
   const [err, setErr] = useState(false)
   const [perfectWord, setPerfectWord] = useState("")
-  const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
+  const cohere = new CohereClient({
+    token: import.meta.env.VITE_COHERE_API_KEY,
+  })
 
   const makePrompt = () => {
-    let prompt = "";
+    let prompt = "MAKE SURE TO ONLY RESPOND WITH ONE WORD OR COMPOUND WORD! \n\n";
 
     if (sentence.current?.value) {
       prompt += `Find the perfect word that can replace [blank] in  "${sentence.current.value}"", with the following traits.`
@@ -73,10 +72,11 @@ export default function App() {
     setLoading(true)
     let completion
     try {
-      completion = await openai.createCompletion({
-        model: "text-davinci-002",
+      completion = await cohere.generate({
         prompt: makePrompt(),
-      });
+        model: "command-light",
+        maxTokens: 10
+      })
     }
     catch (error: any) {
       console.log(error)
@@ -85,12 +85,12 @@ export default function App() {
       return
     }
 
-    if (!completion.data || !completion.data.choices || !completion.data.choices[0].text) {
+    if (!completion.generations || !completion.generations[0] || !completion.generations[0].text) {
       setErr(true)
       return
     }
 
-    const finalWord = completion.data.choices[0].text.replace(/[^a-z0-9]|\s/gi, '');
+    const finalWord = completion.generations[0].text.replace(/[^a-z0-9]|\s/gi, '');
     console.log(finalWord)
 
     setPerfectWord(finalWord)
