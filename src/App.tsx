@@ -71,7 +71,6 @@ export default function App() {
     // 👇️ prevent page refresh
     event.preventDefault();
     setLoading(true)
-    console.log(import.meta.env.VITE_OPENAI_API_KEY)
     let completion
     try {
       completion = await openai.createCompletion({
@@ -162,9 +161,9 @@ export default function App() {
       <p>{loading ? 'loading' : null}</p>{!loading && perfectWord ? (<div>
         <h2>{perfectWord}</h2>
         <a href={`https://www.google.com/search?q=${perfectWord}+definition`} target="_blank">Go to word definition</a>
-        
+
       </div>) : null}
-<h2 className='center'>{err ? 'Woah! Looks like I\'m broke[n]! Contact me to figure this out.' : null}</h2>
+      <h2 className='center'>{err ? 'Woah! Looks like I\'m broke[n]! Contact me to figure this out.' : null}</h2>
     </div>
     <h3 className='center'>Made with 🔥 by <a href='https://twitter.com/krishrshah'>Krish</a></h3>
   </div>
